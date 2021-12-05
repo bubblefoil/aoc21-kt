@@ -7,6 +7,15 @@ import java.security.MessageDigest
  */
 fun readInput(name: String) = File("src", "$name.txt").readLines()
 
+fun readInts(s: String, delimiter: Char = ' '): List<Int> {
+    return s.split(delimiter).map { it.toInt() }
+}
+
+infix fun Int.toward(to: Int): IntProgression {
+    val step = if (this > to) -1 else 1
+    return IntProgression.fromClosedRange(this, to, step)
+}
+
 /**
  * Converts string to md5 hash.
  */
