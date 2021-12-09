@@ -21,9 +21,6 @@ data class Line(val x1: Int, val y1: Int, val x2: Int, val y2: Int) {
     }
 }
 
-data class Point(val x: Int, val y: Int)
-
-
 fun parse(line: String): Line {
     val regex = Regex("""(\d+),(\d+) -> (\d+),(\d+)""")
     val result = regex.matchEntire(line)
