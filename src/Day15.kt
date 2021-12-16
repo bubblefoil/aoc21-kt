@@ -61,7 +61,7 @@ fun printPath(points: Iterable<Point>, map: Map<Point, Int>) {
 fun tileMap(map: Map<Point, Int>): Map<Point, Int> {
     val size = map.keys.maxByOrNull { it.x + it.y }!!.let { Point(it.x + 1, it.y + 1) }
 
-    fun wrap(x: Int): Int {
+    tailrec fun wrap(x: Int): Int {
         if (x <= 9) return x
         return wrap(x - 9)
     }
@@ -95,6 +95,7 @@ fun main() {
     fun part2(input: List<String>): Int {
         val map = tileMap(readHeightmap(input))
         // This could have been done just by supplying different scoring and neighbor function, but whatever...
+        // Damn, this is slow...
         return totalRisk(map)
     }
 
